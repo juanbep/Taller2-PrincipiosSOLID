@@ -35,9 +35,7 @@ public class RepositoryFactory {
         IVehicleRepository result = null;
 
         switch (type) {
-            case "default":
-                result = new VehicleRepository();
-                break;
+            case "default" -> result = new VehicleRepository();
         }
 
         return result;

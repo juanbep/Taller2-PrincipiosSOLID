@@ -43,8 +43,8 @@ public class TruckParkingCost implements IParkingCost {
 
                     fraction = ((hours - 24) * flaRate) / 24;
                     long total = flaRate + fraction;
-                    long redondeo = Math.round(total / 100) * 100;
-                    return redondeo;
+                    long round = Math.round(total / 100) * 100;
+                    return round;
                 }
             }
         }

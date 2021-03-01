@@ -24,6 +24,8 @@ public class Vehicle {
     /**
      * Constructor Parametrizado plate : placa del vehiculo type : tipo de
      * vehiculo
+     * @param plate
+     * @param type
      */
     public Vehicle(String plate, TypeEnum type) {
         this.plate = plate;
@@ -38,7 +40,7 @@ public class Vehicle {
     }
 
     /**
-     * Métodos getters
+     * Métodos getters; getPlate, getType
      *
      * @return
      */
@@ -51,12 +53,17 @@ public class Vehicle {
     }
 
     /**
-     * Métodos setters
+     * Método setter
+     * @param plate
      */
     public void setPlate(String plate) {
         this.plate = plate;
     }
 
+    /**
+     * Método setter
+     * @param type
+     */
     public void setType(TypeEnum type) {
         this.type = type;
     }

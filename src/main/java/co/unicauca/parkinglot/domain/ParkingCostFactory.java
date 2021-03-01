@@ -14,15 +14,15 @@ import java.util.Map;
  */
 public class ParkingCostFactory {
 
-    private static ParkingCostFactory VarInstance;
-    private Map<TypeEnum, IParkingCost> TimeCostDictionary;
+    private static ParkingCostFactory instance;
+    private Map<TypeEnum, IParkingCost> dictionary;
 
     private ParkingCostFactory() {
 
-        TimeCostDictionary = new EnumMap<>(TypeEnum.class);
-        TimeCostDictionary.put(TypeEnum.CAR, new CarParkingCost());
-        TimeCostDictionary.put(TypeEnum.MOTO, new MotoParkingCost());
-        TimeCostDictionary.put(TypeEnum.TRUCK, new TruckParkingCost());
+        dictionary = new EnumMap<>(TypeEnum.class);
+        dictionary.put(TypeEnum.CAR, new CarParkingCost());
+        dictionary.put(TypeEnum.MOTO, new MotoParkingCost());
+        dictionary.put(TypeEnum.TRUCK, new TruckParkingCost());
 
     }
 
@@ -33,10 +33,10 @@ public class ParkingCostFactory {
      */
     public static ParkingCostFactory getInstance() {
 
-        if (VarInstance == null) {
-            VarInstance = new ParkingCostFactory();
+        if (instance == null) {
+            instance = new ParkingCostFactory();
         }
-        return VarInstance;
+        return instance;
 
     }
 
@@ -50,11 +50,11 @@ public class ParkingCostFactory {
      */
     public IParkingCost getParkingCost(TypeEnum parTypeVeh) {
 
-        IParkingCost varResultado = null;
-        if (TimeCostDictionary.containsKey(parTypeVeh)) {
-            varResultado = TimeCostDictionary.get(parTypeVeh);
+        IParkingCost varResult = null;
+        if (dictionary.containsKey(parTypeVeh)) {
+            varResult = dictionary.get(parTypeVeh);
         }
-        return varResultado;
+        return varResult;
 
     }
 
