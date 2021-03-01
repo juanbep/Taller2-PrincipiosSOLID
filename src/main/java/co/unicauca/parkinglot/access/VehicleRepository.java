@@ -37,13 +37,15 @@ public class VehicleRepository implements IVehicleRepository {
      * Funcion para crear la tabla Vehicle y la base de datos (en memoria).
      */
     private void initDatabase() {
+        // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
-                + "	Plate text PRIMARY KEY,\n"
+                + "	plate text PRIMARY KEY\n"
                 + ");";
         try {
             this.connect();
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
+            //this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,11 +55,13 @@ public class VehicleRepository implements IVehicleRepository {
      * Funcion que conecta la aplicacion con la base de datos.
      */
     public void connect() {
+        // SQLite connection string
         //String url = "jdbc:sqlite:./mydatabase.db";
         String url = "jdbc:sqlite::memory:";
 
         try {
             conn = DriverManager.getConnection(url);
+
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,13 +83,16 @@ public class VehicleRepository implements IVehicleRepository {
     @Override
     public boolean saveVehicle(Vehicle parVehicle) {
         try {
+            //Validate product
             if (parVehicle == null || parVehicle.getPlate().isEmpty()) {
                 return false;
             }
-            String sql = "INSERT INTO Vehicle ( Plate ) " + "VALUES ( ? )";
+            //this.connect();
+            String sql = "INSERT INTO Vehicle ( plate ) " + "VALUES ( ? )";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, parVehicle.getPlate());
             pstmt.executeUpdate();
+            //this.disconnect();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,15 +104,19 @@ public class VehicleRepository implements IVehicleRepository {
     public List<Vehicle> ListVehicle() {
         List<Vehicle> listVehicle = new ArrayList<>();
         try {
-            String sql = "SELECT Plate FROM Vehicle";
+            String sql = "SELECT plate FROM Vehicle";
+            //this.connect();
+
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Vehicle varVehicle = new Vehicle();
-                varVehicle.setPlate(rs.getString("Plate"));
+                varVehicle.setPlate(rs.getString("plate"));
 
                 listVehicle.add(varVehicle);
             }
+            //this.disconnect();
+
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
