@@ -37,8 +37,8 @@ public class VehicleRepository implements IVehicleRepository {
      * Funcion para crear la tabla Vehicle y la base de datos (en memoria).
      */
     private void initDatabase() {
-        String sql = "CREATE TABLE IF NOT EXISTS Vehiculo (\n"
-                + "	Placa text PRIMARY KEY,\n"
+        String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
+                + "	Plate text PRIMARY KEY,\n"
                 + ");";
         try {
             this.connect();
@@ -82,7 +82,7 @@ public class VehicleRepository implements IVehicleRepository {
             if (parVehicle == null || parVehicle.getPlate().isEmpty()) {
                 return false;
             }
-            String sql = "INSERT INTO Vehiculo ( Placa ) " + "VALUES ( ? )";
+            String sql = "INSERT INTO Vehicle ( Plate ) " + "VALUES ( ? )";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, parVehicle.getPlate());
             pstmt.executeUpdate();
@@ -97,12 +97,12 @@ public class VehicleRepository implements IVehicleRepository {
     public List<Vehicle> ListVehicle() {
         List<Vehicle> listVehicle = new ArrayList<>();
         try {
-            String sql = "SELECT Placa FROM Vehiculo";
+            String sql = "SELECT Plate FROM Vehicle";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Vehicle varVehicle = new Vehicle();
-                varVehicle.setPlate(rs.getString("Placa"));
+                varVehicle.setPlate(rs.getString("Plate"));
 
                 listVehicle.add(varVehicle);
             }
