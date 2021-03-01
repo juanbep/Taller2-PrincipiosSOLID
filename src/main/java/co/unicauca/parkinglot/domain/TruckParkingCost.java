@@ -9,8 +9,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
- * Está clase tiene toda la lógica que se encarga de calcular el valor a pagar por camión dependiendo 
- * del tiempo que uso el servicio y la tarifa vigente...
+ * Está clase tiene toda la lógica que se encarga de calcular el valor a pagar
+ * por camión dependiendo del tiempo que uso el servicio y la tarifa vigente...
+ *
  * @author Beca98
  */
 public class TruckParkingCost implements IParkingCost {
@@ -20,32 +21,26 @@ public class TruckParkingCost implements IParkingCost {
 
         long flaRate = 15000; //tarifa fija 
         long halfDayRate = 10000; //tarifa de medio dia 
-        long fraction;
+        double fraction;
         long hours;
 
-        long time = Duration.between(input, input).toMinutes();
+        long time = Duration.between(input, output).toMinutes();
 
         hours = time / 60;
 
-        if (time < 1) {
-            System.out.println("Tiempo negativo no es permitido");
+        if (winDraw((int) (Math.random() * 1000 + 1))) {
+            System.out.println("FELICIDADES! Ha ganado el sorteo no debe pagar nada");
             return 0;
         } else {
-            if (winDraw((int) (Math.random() * 1000 + 1))) {
-                System.out.println("FELICIDADES! Ha ganado el sorteo no debe pagar nada");
-                return 0;
+            if (hours <= 12) {
+                return halfDayRate;
+            } else if (hours > 12 && hours <= 24) {
+                return flaRate;
             } else {
-                if (hours <= 12) {
-                    return halfDayRate;
-                } else if (hours > 12 && hours <= 24) {
-                    return flaRate;
-                } else {
-
-                    fraction = ((hours - 24) * flaRate) / 24;
-                    long total = flaRate + fraction;
-                    long round = Math.round(total / 100) * 100;
-                    return round;
-                }
+                fraction = ((hours - 24) * flaRate) / 24;
+                double total = flaRate + fraction;
+                long round = Math.round(total / 100) * 100;
+                return round;
             }
         }
 

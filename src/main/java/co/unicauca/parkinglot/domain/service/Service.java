@@ -6,7 +6,6 @@
 package co.unicauca.parkinglot.domain.service;
 
 import co.unicauca.parkinglot.access.IVehicleRepository;
-import co.unicauca.parkinglot.access.VehicleRepository;
 import co.unicauca.parkinglot.domain.IParkingCost;
 import co.unicauca.parkinglot.domain.ParkingCostFactory;
 import co.unicauca.parkinglot.domain.Vehicle;
@@ -20,11 +19,16 @@ import java.util.List;
  */
 public class Service {
 
-    private IVehicleRepository repository;
-
     /**
-     * Constructor por defecto de la clase Service.
-     * @param repository
+     * Ahora hay una dependencia de una abstracción, no es algo concreto, no
+     * sabe cómo está implementado.
+     */
+    private IVehicleRepository repository;
+/**
+     * Inyección de dependencias en el constructor. Ya no conviene que el mismo
+     * servicio cree un repositorio concreto
+     *
+     * @param repository una clase hija de IVehicleRepository
      */
     public Service(IVehicleRepository repository) {
         this.repository = repository;
@@ -57,15 +61,25 @@ public class Service {
         return listVehicle;
     }
 
+    
+    /**
+     * Función para calcular la tarifa a cobrar para un tipo de vehiculo...
+     *
+     * @param parVehicle : parametro de tipo vehiculo 
+     * @param input : parametro que recibe la hora de entrada del vehiculo al parqueadero  
+     * @param output : parametro que recibe la hora de salida del vehiculo al parqueadero
+     * @return  
+     */
+   
     public long calculateParkingCost(Vehicle parVehicle, LocalDateTime input, LocalDateTime output) {
 
         if (parVehicle == null) {
             return -1;
         }
         //El parqueadero devuelve un instancia de la jerarquia 
-        IParkingCost varTarifa = ParkingCostFactory.getInstance().getParkingCost(parVehicle.getType());
-        long varResultado = varTarifa.calculateCost(parVehicle, input, output);
-        return varResultado;
+        IParkingCost varRate = ParkingCostFactory.getInstance().getParkingCost(parVehicle.getType());
+        long varResult = varRate.calculateCost(parVehicle, input, output);
+        return varResult;
     }
 
 }

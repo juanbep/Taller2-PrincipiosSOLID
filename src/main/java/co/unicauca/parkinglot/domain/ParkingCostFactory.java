@@ -17,6 +17,10 @@ public class ParkingCostFactory {
     private static ParkingCostFactory instance;
     private Map<TypeEnum, IParkingCost> dictionary;
 
+    /**
+     * si se requiere otro tipo de vehiculo , se abre un registro en el
+     * diccionario para no violar el principio
+     */
     private ParkingCostFactory() {
 
         dictionary = new EnumMap<>(TypeEnum.class);
@@ -27,7 +31,7 @@ public class ParkingCostFactory {
     }
 
     /**
-     * Funcion que se encarga de retornar la instancia de la clase
+     * Funcion encargada de retornar la instancia de la clase...
      *
      * @return Retorna una instancia unica del vehiculo.
      */
@@ -42,8 +46,8 @@ public class ParkingCostFactory {
 
     /**
      *
-     * Funcion que se encarga de determinar para un vehiculo la clase que se
-     * encargara de calcular el costo del parqueadero
+     * Funcion que de determina para un respectivo vehiculo la clase encargada
+     * de calcular el costo del parqueadero...
      *
      * @param parTypeVeh parametro de tipo Vehiculo
      * @return Retorna una instancia con algun tipo de vehiculo.

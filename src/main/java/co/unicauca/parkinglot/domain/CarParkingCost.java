@@ -9,8 +9,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
- * Está clase tiene toda la lógica que se encarga de calcular el valor a pagar por carro dependiendo 
- * del tiempo que uso el servicio y la tarifa vigente...
+ * Está clase tiene toda la lógica que se encarga de calcular el valor a pagar
+ * por carro dependiendo del tiempo que uso el servicio y la tarifa vigente...
+ *
  * @author Beca98
  */
 public class CarParkingCost implements IParkingCost {
@@ -20,21 +21,17 @@ public class CarParkingCost implements IParkingCost {
 
         final long flaRate = 2000; //tarifaFija 
         final long hourlyRate = 1000; //tarifaPorHora
-        long fraction;
+        double fraction;
 
-        long time = Duration.between(input, input).toMinutes();
+        long time = Duration.between(input, output).toMinutes();
 
-        if (time < 1) {
-            return 0;
+        if (time <= 60) {
+            return flaRate;
         } else {
-            if (time < 61) {
-                return flaRate;
-            } else {
-                fraction = ((time - 60) * hourlyRate) / 60;
-                long total = hourlyRate + fraction;
-                long aprox = Math.round(total / 100) * 100;
-                return aprox;
-            }
+            fraction = ((time - 60) * hourlyRate) / 60;
+            double total = hourlyRate + fraction;
+            long aprox = Math.round(total / 100) * 100;
+            return aprox;
         }
 
     }

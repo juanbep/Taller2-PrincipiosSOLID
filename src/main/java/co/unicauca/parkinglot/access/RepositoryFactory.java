@@ -30,12 +30,19 @@ public class RepositoryFactory {
 
     }
 
+    /**
+     * Método que crea una instancia concreta de la jerarquia IVehicleRepository
+     *
+     * @param type cadena que indica qué tipo de clase hija debe instanciar
+     * @return una clase hija de la abstracción IVehicleRepository
+     */
     public IVehicleRepository getRepository(String type) {
 
         IVehicleRepository result = null;
 
         switch (type) {
-            case "default" -> result = new VehicleRepository();
+            case "default" ->
+                result = new VehicleRepository();
         }
 
         return result;
