@@ -12,42 +12,58 @@ package co.unicauca.parkinglot.domain;
  */
 public class Vehicle {
 
-    //Placa 
+    /**
+     * Placa
+     */
     private String plate;
-    //Tipo: Carro, Moto o Camión 
+    /**
+     * Tipo; carro, moto, camion
+     */
     private TypeEnum type;
 
-    //Constructor parametrizado 
-    //plate = placa del vehiculo 
-    //type = tipo de vehiculo 
+    /**
+     * Constructor Parametrizado plate : placa del vehiculo type : tipo de
+     * vehiculo
+     */
     public Vehicle(String plate, TypeEnum type) {
         this.plate = plate;
         this.type = type;
     }
 
-    //Constructor por defecto 
+    /**
+     * Constructor por defecto
+     */
     public Vehicle() {
 
     }
 
-    //Métodos Getters and Setters 
+    /**
+     * Métodos getters
+     *
+     * @return
+     */
     public String getPlate() {
         return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
     }
 
     public TypeEnum getType() {
         return type;
     }
 
+    /**
+     * Métodos setters
+     */
+    public void setPlate(String plate) {
+        this.plate = plate;
+    }
+
     public void setType(TypeEnum type) {
         this.type = type;
     }
 
-    //Método toString 
+    /**
+     * Método toString
+     */
     @Override
     public String toString() {
         return "Vehicle{" + "plate=" + plate + ", type=" + type + '}';

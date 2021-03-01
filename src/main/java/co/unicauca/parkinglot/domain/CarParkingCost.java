@@ -9,7 +9,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
- *
+ * Está clase tiene toda la lógica que se encarga de calcular el valor a pagar por carro dependiendo 
+ * del tiempo que uso el servicio y la tarifa vigente...
  * @author Beca98
  */
 public class CarParkingCost implements IParkingCost {

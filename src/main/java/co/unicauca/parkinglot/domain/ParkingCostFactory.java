@@ -48,7 +48,7 @@ public class ParkingCostFactory {
      * @param parTypeVeh parametro de tipo Vehiculo
      * @return Retorna una instancia con algun tipo de vehiculo.
      */
-    public IParkingCost ParkingCostFactory(TypeEnum parTypeVeh) {
+    public IParkingCost getParkingCost(TypeEnum parTypeVeh) {
 
         IParkingCost varResultado = null;
         if (TimeCostDictionary.containsKey(parTypeVeh)) {
