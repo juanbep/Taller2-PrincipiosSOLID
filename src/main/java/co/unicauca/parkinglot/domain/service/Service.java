@@ -5,10 +5,56 @@
  */
 package co.unicauca.parkinglot.domain.service;
 
+import co.unicauca.parkinglot.access.VehicleRepository;
+import co.unicauca.parkinglot.domain.Vehicle;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 /**
  *
  * @author Beca98
  */
 public class Service {
+    private VehicleRepository repository;
+    
+    /**
+     * Constructor por defecto de la clase Service.
+     */
+    public Service() {
+        repository = new VehicleRepository();
+    }
+
+    /**
+     * Lógica de acceso a datos
+     *
+     * @param parNewVehicle , Vehiculo a ser almacenado en la Base de datos.
+     * @return true si fue posible guardar el producto, false en caso contrario.
+     */
+    public boolean guardarVehiculo(Vehicle parNewVehicle) {
+
+        if (parNewVehicle == null || parNewVehicle.getPlate().isEmpty()) {
+            return false;
+        }
+        repository.saveVehicle(parNewVehicle);
+        return true;
+    }
+    
+    /**
+     * Funcion encargada de recibir lista de los vehiculos almacenados en la
+     * base de datos.
+     *
+     * @return Retorna lista de vehiculos almacenados en la base de datos.
+     */
+    public List<Vehicle> listaVehiculo() {
+        List<Vehicle> listVehicle = new ArrayList<>();
+        listVehicle = repository.ListVehicle();
+        return listVehicle;
+    }
+    
+    
+    
+    
     
 }

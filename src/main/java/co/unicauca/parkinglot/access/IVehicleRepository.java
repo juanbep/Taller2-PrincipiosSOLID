@@ -5,10 +5,17 @@
  */
 package co.unicauca.parkinglot.access;
 
+import co.unicauca.parkinglot.domain.Vehicle;
+import java.util.List;
+
 /**
  *
  * @author Beca98
  */
 public interface IVehicleRepository {
-    
+
+    boolean saveVehicle(Vehicle parVehicle);
+
+    List<Vehicle> ListVehicle();
+
 }

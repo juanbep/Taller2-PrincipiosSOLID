@@ -5,10 +5,16 @@
  */
 package co.unicauca.parkinglot.domain;
 
+import java.time.LocalDateTime;
+
 /**
+ * Interfaz para calcular el costo del parqueadero de cualquier tipo de
+ * vehiculo: carro, moto, camión
  *
  * @author Beca98
  */
 public interface IParkingCost {
-    
+
+    long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output);
+
 }

@@ -5,10 +5,36 @@
  */
 package co.unicauca.parkinglot.domain;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Beca98
  */
-public class MotoParkingCost {
-    
+public class MotoParkingCost implements IParkingCost {
+
+    @Override
+    public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {
+
+        final long flaRate = 1000; //tarifaFija 
+        final long hourlyRate = 500; //tarifaPorHora
+        long fraction;
+
+        long time = Duration.between(input, input).toMinutes();
+
+        if (time < 1) {
+            return 0;
+        } else {
+            if (time < 61) {
+                return flaRate;
+            } else {
+                fraction = flaRate + (((time - 60) * hourlyRate) / 60);
+                long total = Math.round(fraction / 100) * 100;
+                return total;
+            }
+        }
+
+    }
+
 }

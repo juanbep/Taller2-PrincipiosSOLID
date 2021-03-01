@@ -10,5 +10,14 @@ package co.unicauca.parkinglot.access;
  * @author Beca98
  */
 public class RepositoryFactory {
+   
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

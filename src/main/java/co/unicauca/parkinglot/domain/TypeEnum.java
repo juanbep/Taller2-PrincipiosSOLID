@@ -6,9 +6,9 @@
 package co.unicauca.parkinglot.domain;
 
 /**
- *
+ * Tipos de Vehiculo; Moto, Carro o Camion 
  * @author Beca98
  */
-public class TypeEnum {
-    
+public enum TypeEnum {
+    MOTO, CAR, TRUCK;
 }
