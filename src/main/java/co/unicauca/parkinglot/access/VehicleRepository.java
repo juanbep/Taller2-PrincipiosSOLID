@@ -5,6 +5,7 @@
  */
 package co.unicauca.parkinglot.access;
 
+import co.unicauca.parkinglot.domain.TypeEnum;
 import co.unicauca.parkinglot.domain.Vehicle;
 import co.unicauca.parkinglot.domain.service.Service;
 import java.sql.Connection;
@@ -112,7 +113,6 @@ public class VehicleRepository implements IVehicleRepository {
             while (rs.next()) {
                 Vehicle varVehicle = new Vehicle();
                 varVehicle.setPlate(rs.getString("plate"));
-
                 listVehicle.add(varVehicle);
             }
             //this.disconnect();

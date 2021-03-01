@@ -124,7 +124,6 @@ public class ParkingTest {
 
         veh = new Vehicle("NBV-987", TypeEnum.CAR);
         service.saveVehicle(veh);
-
         veh = new Vehicle("IJY-987", TypeEnum.TRUCK);
         service.saveVehicle(veh);
 
@@ -134,6 +133,7 @@ public class ParkingTest {
         long result = service.listVehicles().size();
         assertEquals(expResult, result);
         assertEquals("QET-646", service.listVehicles().get(0).getPlate());
+
     }
 
 }
