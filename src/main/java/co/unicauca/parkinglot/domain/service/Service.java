@@ -5,6 +5,7 @@
  */
 package co.unicauca.parkinglot.domain.service;
 
+import co.unicauca.parkinglot.access.IVehicleRepository;
 import co.unicauca.parkinglot.access.VehicleRepository;
 import co.unicauca.parkinglot.domain.IParkingCost;
 import co.unicauca.parkinglot.domain.ParkingCostFactory;
@@ -19,13 +20,13 @@ import java.util.List;
  */
 public class Service {
 
-    private VehicleRepository repository;
+    private IVehicleRepository repository;
 
     /**
      * Constructor por defecto de la clase Service.
      */
-    public Service() {
-        repository = new VehicleRepository();
+    public Service(IVehicleRepository repository) {
+        this.repository = repository;
     }
 
     /**
