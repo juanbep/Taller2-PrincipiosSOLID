@@ -17,12 +17,11 @@ public class ParkingCostFactory {
     private static ParkingCostFactory instance;
     private Map<TypeEnum, IParkingCost> dictionary;
 
-    /**
-     * si se requiere otro tipo de vehiculo , se abre un registro en el
-     * diccionario para no violar el principio
-     */
     private ParkingCostFactory() {
-
+        /**
+         * si se requiere otro tipo de vehiculo , se abre un registro en el
+         * diccionario para no violar el principio
+         */
         dictionary = new EnumMap<>(TypeEnum.class);
         dictionary.put(TypeEnum.CAR, new CarParkingCost());
         dictionary.put(TypeEnum.MOTO, new MotoParkingCost());

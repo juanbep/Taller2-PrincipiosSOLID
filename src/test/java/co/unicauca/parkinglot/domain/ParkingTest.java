@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Beca98
  */
 public class ParkingTest {
-  
+
     /**
      * Test of calculateCost method
      */
@@ -138,5 +138,4 @@ public class ParkingTest {
 //        assertEquals("QET-646", service.listVehicles().get(0).getPlate());
 //
 //    }
-
 }
