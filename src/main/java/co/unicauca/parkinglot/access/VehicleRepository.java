@@ -40,7 +40,8 @@ public class VehicleRepository implements IVehicleRepository {
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
-                + "	plate text PRIMARY KEY\n"
+                + "	plate text PRIMARY KEY, \n"
+                + "     type text NOT NULL\n"
                 + ");";
         try {
             this.connect();
@@ -89,9 +90,10 @@ public class VehicleRepository implements IVehicleRepository {
                 return false;
             }
             //this.connect();
-            String sql = "INSERT INTO Vehicle ( plate ) " + "VALUES ( ? )";
+            String sql = "INSERT INTO Vehicle ( plate, type ) " + "VALUES ( ?, ? )";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, parVehicle.getPlate());
+            pstmt.setString(2, parVehicle.getType().name());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
@@ -105,7 +107,7 @@ public class VehicleRepository implements IVehicleRepository {
     public List<Vehicle> ListVehicle() {
         List<Vehicle> listVehicle = new ArrayList<>();
         try {
-            String sql = "SELECT plate FROM Vehicle";
+            String sql = "SELECT plate, type FROM Vehicle";
             //this.connect();
 
             Statement stmt = conn.createStatement();
@@ -113,6 +115,7 @@ public class VehicleRepository implements IVehicleRepository {
             while (rs.next()) {
                 Vehicle varVehicle = new Vehicle();
                 varVehicle.setPlate(rs.getString("plate"));
+                varVehicle.setType(TypeEnum.valueOf(rs.getString("type")));
                 listVehicle.add(varVehicle);
             }
             //this.disconnect();
