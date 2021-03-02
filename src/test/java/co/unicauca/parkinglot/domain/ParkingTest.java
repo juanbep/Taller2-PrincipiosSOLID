@@ -7,7 +7,10 @@ package co.unicauca.parkinglot.domain;
 
 import co.unicauca.parkinglot.access.IVehicleRepository;
 import co.unicauca.parkinglot.access.RepositoryFactory;
+import co.unicauca.parkinglot.domain.TypeEnum;
+import co.unicauca.parkinglot.domain.Vehicle;
 import co.unicauca.parkinglot.domain.service.Service;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
@@ -20,39 +23,39 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Beca98
  */
 public class ParkingTest {
-
+  
     /**
      * Test of calculateCost method
      */
-//    @Test
-//    public void MotosTest() {
-//
-//        System.out.println("Moto hora y media");
-//        Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
-//        LocalDateTime input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 17, 0);
-//        LocalDateTime output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 18, 30);
-//
-//        IVehicleRepository repo = RepositoryFactory.getInstance().getRepository("default");
-//        Service service = new Service(repo);
-//
-//        long expResult = 1300L;
-//        long result = service.calculateParkingCost(veh, input, output);
-//        assertEquals(expResult, result);
-//
-//        System.out.println("Moto menos una hora");
-//        output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 17, 45);
-//        expResult = 1000L;
-//        result = service.calculateParkingCost(veh, input, output);
-//        assertEquals(expResult, result);
-//
-//        System.out.println("Moto 3 horas y 45 minutos");
-//        input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 8, 0);
-//        output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 11, 45);
-//        expResult = 2400L;
-//        result = service.calculateParkingCost(veh, input, output);
-//        assertEquals(expResult, result);
-//
-//    }
+    @Test
+    public void MotosTest() {
+
+        System.out.println("Moto hora y media");
+        Vehicle veh = new Vehicle("FTK-123", TypeEnum.MOTO);
+        LocalDateTime input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 17, 0);
+        LocalDateTime output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 18, 30);
+
+        IVehicleRepository repo = RepositoryFactory.getInstance().getRepository("default");
+        Service service = new Service(repo);
+
+        long expResult = 1300L;
+        long result = service.calculateParkingCost(veh, input, output);
+        assertEquals(expResult, result);
+
+        System.out.println("Moto menos una hora");
+        output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 17, 45);
+        expResult = 1000L;
+        result = service.calculateParkingCost(veh, input, output);
+        assertEquals(expResult, result);
+
+        System.out.println("Moto 3 horas y 45 minutos");
+        input = LocalDateTime.of(2021, Month.FEBRUARY, 22, 8, 0);
+        output = LocalDateTime.of(2021, Month.FEBRUARY, 22, 11, 45);
+        expResult = 2400L;
+        result = service.calculateParkingCost(veh, input, output);
+        assertEquals(expResult, result);
+
+    }
 
 //    @Test
 //    public void CarTest() {
