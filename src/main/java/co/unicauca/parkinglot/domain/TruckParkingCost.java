@@ -46,9 +46,9 @@ public class TruckParkingCost implements IParkingCost {
 
     }
 
-    private boolean winDraw(int parNumero) {
-        int varNumero = (int) (Math.random() * 1000 + 1);
-        return parNumero == varNumero;
+    private boolean winDraw(int parNumber) {
+        int varNumber = (int) (Math.random() * 1000 + 1);
+        return parNumber == varNumber;
     }
 
 }
