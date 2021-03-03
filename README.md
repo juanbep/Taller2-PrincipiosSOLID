@@ -2,6 +2,7 @@
 Laboratorio de ingeniería del Software II - Taller número 2 sobre principios SOLID  
 
 Aplicación sencilla que permita guardar y recuperar vehículos y además, facturar el pago de camiones, carros y motos de un parqueadero público.
+Teniendo en cuenta la aplicación de los princpios SOLID...
 
 Las reglas del negocio para ello son:
 
@@ -22,5 +23,3 @@ a los $15.000 (regla de tres simple). Por ejemplo, si estuvo tresdías completos
 Específicamente para los  camioneros, los  cuales son el mercado objetivo, se hace todas  lasveces un sorteo (Por ejemplo, acertarle a un número aleatorio 
 de entre 1 y 1000), en caso desalir beneficiado, el costo sería 0. Queda a la imaginación proponer los detalles del sorteo.
 
-Aplicación que permita grabar y listar en una base de datos los vehículos que ingresan al parqueadero y calcular el valor a pagar de un vehículo cualquiera 
-que sea su tipo. Aplicar los principios SOLID. 
