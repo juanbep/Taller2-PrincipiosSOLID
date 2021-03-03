@@ -58,7 +58,7 @@ public class Vehicle {
     /**
      * Método setter
      *
-     * @param plate
+     * @param plate parametro tipo string que recibe la placa del vehiculo
      */
     public void setPlate(String plate) {
         this.plate = plate;
@@ -67,7 +67,7 @@ public class Vehicle {
     /**
      * Método setter
      *
-     * @param type
+     * @param type parametro que recibe el tipo de vehiculo
      */
     public void setType(TypeEnum type) {
         this.type = type;
