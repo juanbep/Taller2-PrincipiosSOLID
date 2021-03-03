@@ -16,6 +16,15 @@ import java.time.LocalDateTime;
  */
 public class CarParkingCost implements IParkingCost {
 
+    /**
+     * Método que calcula la tarifa a pagar en el parqueadero para un vehiculo
+     * de tipo carro
+     *
+     * @param veh parametro de tipo Vehiculo
+     * @param input parametro con la hora de entrada del vehiculo
+     * @param output parametro con la hora de salida del vehiculo
+     * @return
+     */
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {
 
@@ -25,19 +34,15 @@ public class CarParkingCost implements IParkingCost {
 
         long time = Duration.between(input, output).toMinutes();
 
+        //Si el tiempo es menor o igual a una hora retorna la tarifa fija 
         if (time <= 60) {
-            /*
-            * Si el tiempo es menor o igual a una hora retorna la tarifa fija 
-            */
             return flaRate;
         } else {
-            /*
-            * Si el tiempo es mayor a una hora se pagará una tarifa de 1.000 la hora  
-            * o   su   fracción   (regla   de   tres   simple).  
-            */
+            // Si el tiempo es mayor a una hora se pagará una tarifa de 1.000 la hora  
+            // o   su   fracción   (regla   de   tres   simple).  
             fraction = ((time - 60) * hourlyRate) / 60;
             double total = flaRate + fraction;
-            long aprox = (long)Math.ceil(total / 100) * 100;
+            long aprox = (long) Math.ceil(total / 100) * 100;
             return aprox;
         }
 

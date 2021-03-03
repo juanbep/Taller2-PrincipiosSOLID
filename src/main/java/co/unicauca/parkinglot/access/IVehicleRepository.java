@@ -9,8 +9,10 @@ import co.unicauca.parkinglot.domain.Vehicle;
 import java.util.List;
 
 /**
+ * Interfaz para repositorio de vehiculo
  *
  * @author Beca98
+ *
  */
 public interface IVehicleRepository {
 

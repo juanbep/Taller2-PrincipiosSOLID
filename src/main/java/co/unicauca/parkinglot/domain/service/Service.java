@@ -19,12 +19,11 @@ import java.util.List;
  */
 public class Service {
 
-    /**
-     * Ahora hay una dependencia de una abstracción, no es algo concreto, no
-     * sabe cómo está implementado.
-     */
+    // Ahora hay una dependencia de una abstracción, no es algo concreto, no
+    // sabe cómo está implementado.
     private IVehicleRepository repository;
-/**
+
+    /**
      * Inyección de dependencias en el constructor. Ya no conviene que el mismo
      * servicio cree un repositorio concreto
      *
@@ -61,16 +60,16 @@ public class Service {
         return listVehicle;
     }
 
-    
     /**
      * Función para calcular la tarifa a cobrar para un tipo de vehiculo...
      *
-     * @param parVehicle : parametro de tipo vehiculo 
-     * @param input : parametro que recibe la hora de entrada del vehiculo al parqueadero  
-     * @param output : parametro que recibe la hora de salida del vehiculo al parqueadero
-     * @return  
+     * @param parVehicle : parametro de tipo vehiculo
+     * @param input : parametro que recibe la hora de entrada del vehiculo al
+     * parqueadero
+     * @param output : parametro que recibe la hora de salida del vehiculo al
+     * parqueadero
+     * @return
      */
-   
     public long calculateParkingCost(Vehicle parVehicle, LocalDateTime input, LocalDateTime output) {
 
         if (parVehicle == null) {

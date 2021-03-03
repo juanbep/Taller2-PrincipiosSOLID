@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Repositorio para vehiculo
  *
  * @author Beca98
  */
@@ -82,6 +83,12 @@ public class VehicleRepository implements IVehicleRepository {
         }
     }
 
+    /**
+     * Función que se encarga de guardar un vehiculo en la base de datos
+     *
+     * @param parVehicle parameto de tipo vehiculo
+     * @return
+     */
     @Override
     public boolean saveVehicle(Vehicle parVehicle) {
         try {
@@ -103,6 +110,12 @@ public class VehicleRepository implements IVehicleRepository {
         return false;
     }
 
+    /**
+     * Función que se encarga de tomar los vehiculos de la base de dato y
+     * enlistarlos
+     *
+     * @return
+     */
     @Override
     public List<Vehicle> ListVehicle() {
         List<Vehicle> listVehicle = new ArrayList<>();

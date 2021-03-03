@@ -17,6 +17,14 @@ import java.time.LocalDateTime;
  */
 public class MotoParkingCost implements IParkingCost {
 
+    /**
+     * Método que calcula la tarifa a pagar para un vehiculo tipo moto
+     *
+     * @param veh parametro de tipo vehiculo
+     * @param input parametro con la hora de entrada del vehiculo
+     * @param output parametro con la hora de salida del vehiculo
+     * @return
+     */
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {
 
@@ -26,18 +34,15 @@ public class MotoParkingCost implements IParkingCost {
 
         long time = Duration.between(input, output).toMinutes();
 
-        /*
-        * Si el tiempo es menor o igual a una hora se pagará la tarifa fija 
-        */
+        //Si el tiempo es menor o igual a una hora se pagará la tarifa fija 
         if (time <= 60) {
             return flaRate;
         } else {
-            /*
-            * Después de la primera hora, pagará una tarifa de $500 la hora 
-            * o su fracción(regla de tres simple). 
-            */
+
+            //Después de la primera hora, pagará una tarifa de $500 la hora 
+            //o su fracción(regla de tres simple). 
             fraction = flaRate + (((time - 60) * hourlyRate) / 60);
-            long total = (long)Math.ceil( fraction/100 )*100;
+            long total = (long) Math.ceil(fraction / 100) * 100;
             return total;
         }
     }

@@ -12,20 +12,18 @@ package co.unicauca.parkinglot.domain;
  */
 public class Vehicle {
 
-    /**
-     * Placa
-     */
+    // Placa
     private String plate;
-    /**
-     * Tipo; carro, moto, camion
-     */
+
+    // Tipo; carro, moto, camion
     private TypeEnum type;
 
     /**
      * Constructor Parametrizado plate : placa del vehiculo type : tipo de
      * vehiculo
-     * @param plate
-     * @param type
+     *
+     * @param plate parametro que recibe la placa
+     * @param type parametro que recibe el tipo de vehiculo
      */
     public Vehicle(String plate, TypeEnum type) {
         this.plate = plate;
@@ -54,6 +52,7 @@ public class Vehicle {
 
     /**
      * Método setter
+     *
      * @param plate
      */
     public void setPlate(String plate) {
@@ -62,6 +61,7 @@ public class Vehicle {
 
     /**
      * Método setter
+     *
      * @param type
      */
     public void setType(TypeEnum type) {

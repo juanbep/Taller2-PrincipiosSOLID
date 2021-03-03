@@ -6,13 +6,17 @@
 package co.unicauca.parkinglot.access;
 
 /**
- *
+ * Repositorio para fábrica 
  * @author Beca98
+ *
  */
 public class RepositoryFactory {
 
     private static RepositoryFactory instance;
 
+    /**
+     * Constructor por defecto de la clase VehicleRepository.
+     */
     private RepositoryFactory() {
     }
 
@@ -20,6 +24,7 @@ public class RepositoryFactory {
      * Clase singleton
      *
      * @return
+     *
      */
     public static RepositoryFactory getInstance() {
 
