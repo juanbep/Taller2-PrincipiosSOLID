@@ -26,11 +26,18 @@ public class MotoParkingCost implements IParkingCost {
 
         long time = Duration.between(input, output).toMinutes();
 
+        /*
+        * Si el tiempo es menor o igual a una hora se pagará la tarifa fija 
+        */
         if (time <= 60) {
             return flaRate;
         } else {
+            /*
+            * Después de la primera hora, pagará una tarifa de $500 la hora 
+            * o su fracción(regla de tres simple). 
+            */
             fraction = flaRate + (((time - 60) * hourlyRate) / 60);
-            long total = Math.round( fraction/100 )*100;
+            long total = (long)Math.ceil( fraction/100 )*100;
             return total;
         }
     }

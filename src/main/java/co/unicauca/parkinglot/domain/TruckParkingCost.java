@@ -5,6 +5,7 @@
  */
 package co.unicauca.parkinglot.domain;
 
+import co.unicauca.parkinglot.infra.Utilities;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -21,34 +22,40 @@ public class TruckParkingCost implements IParkingCost {
 
         long flaRate = 15000; //tarifa fija 
         long halfDayRate = 10000; //tarifa de medio dia 
-        double fraction;
-        long hours;
-
+        double fraction, hours;
+        Utilities sorteo = new Utilities();
         long time = Duration.between(input, output).toMinutes();
-
-        hours = time / 60;
-
-        if (winDraw((int) (Math.random() * 1000 + 1))) {
+        
+        /*
+        * Envia un número random y si coincide con otro numero random el camionero gana el sorteo 
+        */
+        if (sorteo.winDraw((int)(Math.random()*1000+1))) {
             System.out.println("FELICIDADES! Ha ganado el sorteo no debe pagar nada");
             return 0;
+        } else if (time <= 720) {
+            /*
+            * Si el camión está menor o igual a 12 horas se le cobra un valor de $10.000 
+            * que es la tarifa de medio dia... 
+            */
+            return halfDayRate;
+        } else if (time > 720 & time <= 1440) {
+            /*
+            * SI el camión está entre 12 y 24 horas paga $15.000
+            * que es la tarifa fija...
+            */
+            return flaRate;
         } else {
-            if (hours <= 12) {
-                return halfDayRate;
-            } else if (hours > 12 && hours <= 24) {
-                return flaRate;
-            } else {
-                fraction = ((hours - 24) * flaRate) / 24;
-                double total = flaRate + fraction;
-                long round = Math.round(total / 100) * 100;
-                return round;
-            }
+            /*
+            * En adelante de las 24 horas, pagará $15.000 por cada día y por las horas restantes 
+            * se le cobra la fracción de tiempo respecto a los $15.000 (regla de tres simple)...
+            */
+            hours = (double) time / 60;
+            fraction = ((hours - 24) * flaRate) / 24;
+            double total = flaRate + fraction;
+            long aprox = (long) Math.ceil(total / 100) * 100;
+            return aprox;
         }
 
-    }
-
-    private boolean winDraw(int parNumber) {
-        int varNumber = (int) (Math.random() * 1000 + 1);
-        return parNumber == varNumber;
     }
 
 }

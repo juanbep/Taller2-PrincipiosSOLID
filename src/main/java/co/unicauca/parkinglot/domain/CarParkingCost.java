@@ -26,11 +26,18 @@ public class CarParkingCost implements IParkingCost {
         long time = Duration.between(input, output).toMinutes();
 
         if (time <= 60) {
+            /*
+            * Si el tiempo es menor o igual a una hora retorna la tarifa fija 
+            */
             return flaRate;
         } else {
+            /*
+            * Si el tiempo es mayor a una hora se pagará una tarifa de 1.000 la hora  
+            * o   su   fracción   (regla   de   tres   simple).  
+            */
             fraction = ((time - 60) * hourlyRate) / 60;
-            double total = hourlyRate + fraction;
-            long aprox = Math.round(total / 100) * 100;
+            double total = flaRate + fraction;
+            long aprox = (long)Math.ceil(total / 100) * 100;
             return aprox;
         }
 
