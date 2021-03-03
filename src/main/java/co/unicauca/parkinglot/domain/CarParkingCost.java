@@ -18,7 +18,7 @@ public class CarParkingCost implements IParkingCost {
 
     /**
      * Método que calcula la tarifa a pagar en el parqueadero para un vehiculo
-     * de tipo carro
+     * de tipo carro...
      *
      * @param veh parametro de tipo Vehiculo
      * @param input parametro con la hora de entrada del vehiculo
