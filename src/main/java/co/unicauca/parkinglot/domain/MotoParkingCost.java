@@ -23,7 +23,7 @@ public class MotoParkingCost implements IParkingCost {
      * @param veh parametro de tipo vehiculo
      * @param input parametro con la hora de entrada del vehiculo
      * @param output parametro con la hora de salida del vehiculo
-     * @return
+     * @return la tarifa a pagar por el vehiculo tipo Moto
      */
     @Override
     public long calculateCost(Vehicle veh, LocalDateTime input, LocalDateTime output) {

@@ -87,7 +87,7 @@ public class VehicleRepository implements IVehicleRepository {
      * Función que se encarga de guardar un vehiculo en la base de datos
      *
      * @param parVehicle parameto de tipo vehiculo
-     * @return
+     * @return un booleano para saber si se guardó el vehiculo o no
      */
     @Override
     public boolean saveVehicle(Vehicle parVehicle) {
@@ -114,7 +114,7 @@ public class VehicleRepository implements IVehicleRepository {
      * Función que se encarga de tomar los vehiculos de la base de dato y
      * enlistarlos
      *
-     * @return
+     * @return una lista de vehiculos que están en la base de datos
      */
     @Override
     public List<Vehicle> ListVehicle() {

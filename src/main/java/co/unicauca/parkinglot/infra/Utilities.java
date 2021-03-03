@@ -20,7 +20,7 @@ public class Utilities {
      * aleatorio de entre 1 y 1000
      *
      * @param parNumber parametro de tipo int que recibe un número random
-     * @return
+     * @return un booleano para saber si ganó o no el sorteo...
      */
     public boolean winDraw(int parNumber) {
         int varNumber = (int) (Math.random() * 1000 + 1);

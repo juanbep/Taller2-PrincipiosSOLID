@@ -68,7 +68,7 @@ public class Service {
      * parqueadero
      * @param output : parametro que recibe la hora de salida del vehiculo al
      * parqueadero
-     * @return
+     * @return la tarifa a pagar para un tipo de vehiculo
      */
     public long calculateParkingCost(Vehicle parVehicle, LocalDateTime input, LocalDateTime output) {
 

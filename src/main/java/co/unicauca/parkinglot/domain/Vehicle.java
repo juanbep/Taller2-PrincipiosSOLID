@@ -38,14 +38,19 @@ public class Vehicle {
     }
 
     /**
-     * Métodos getters; getPlate, getType
+     * Métodos getter: placa
      *
-     * @return
+     * @return la placa
      */
     public String getPlate() {
         return plate;
     }
 
+    /**
+     * Método getter: type
+     *
+     * @return el tipo de vehiculo
+     */
     public TypeEnum getType() {
         return type;
     }
